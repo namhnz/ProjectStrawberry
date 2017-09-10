@@ -1,0 +1,195 @@
+﻿<Window x:Name="MacSetterWindow" x:Class="MacSetter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MacSetter"
+        xmlns:essential="clr-namespace:MacSetter.Essential"
+        xmlns:converter="clr-namespace:MacSetter.Converter"
+        mc:Ignorable="d"
+        Title="Mac Setter Project" Height="320" Width="380" 
+        WindowStyle="None" AllowsTransparency="False" 
+        ResizeMode="CanResize" Closing="MacSetterWindow_Closing" 
+        Icon="Resources/app_full.png.ico" 
+        RenderOptions.BitmapScalingMode="HighQuality">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="32"
+                      GlassFrameThickness="0, 0, 0, 1"/>
+    </WindowChrome.WindowChrome>
+    
+    <Window.Resources>
+        <!--Convert-->
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converter:InvertableBooleanToVisibilityConverter x:Key="InvertableBooleanToVisibilityConverter"/>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Uniform"
+                    AlignmentX="Center"
+                    AlignmentY="Center"
+                    Opacity="0.2">
+                <ImageBrush.ImageSource>
+                    <BitmapImage UriSource="/MacSetter;component/Resources/app-bg.png"/>
+                </ImageBrush.ImageSource>
+                <ImageBrush.Transform>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </ImageBrush.Transform>
+            </ImageBrush>
+        </Grid.Background>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Style="{DynamicResource WindowTitleBackground}">
+            <StackPanel Margin="10,0,10,0" Height="32" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal">
+                <TextBlock Style="{DynamicResource WindowTitleStyle}"/>
+            </StackPanel>
+            <StackPanel Margin="10,0,10,0" Height="32" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <!--<Button x:Name="SettingsButton" 
+                        Style="{DynamicResource NormalTitleBarButtonTemplate}" 
+                        Content="&#xE148;"
+                        Margin="15,0,15,0"
+                        Background="{DynamicResource TitleBar_LightBlueBrush}"
+                        BorderBrush="{DynamicResource TitleBar_DarkBlueBrush}" Click="SettingsButton_Click"/>-->
+                <Button x:Name="MinimizeButton" 
+                        Style="{DynamicResource NormalTitleBarButtonTemplate}" 
+                        Content="&#xE70D;"
+                        Background="{DynamicResource TitleBar_LightYellowBrush}"
+                        BorderBrush="{DynamicResource TitleBar_DarkYellowBrush}"/>
+                <Button x:Name="MaximizeButton" 
+                        Style="{DynamicResource NormalTitleBarButtonTemplate}" 
+                        Content="&#xE70E;"
+                        Background="{DynamicResource TitleBar_LightGreenBrush}"
+                        BorderBrush="{DynamicResource TitleBar_DarkGreenBrush}"/>
+                <Button x:Name="CloseButton" 
+                        Style="{DynamicResource NormalTitleBarButtonTemplate}" 
+                        Content="&#xE10A;" 
+                        Background="{DynamicResource TitleBar_LightRedBrush}"
+                        BorderBrush="{DynamicResource TitleBar_DarkRedBrush}"/>
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Border HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <Label FontFamily="Segoe UI" FontSize="20">Current:</Label>
+                    </Border>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Border Style="{DynamicResource BorderContainCurrentMacTextBlockStyle}">
+                        <TextBlock x:Name="tbCurrentMac" 
+                                   FontFamily="Segoe UI" 
+                                   FontSize="20"
+                                   Typography.Capitals="AllSmallCaps">28-C2-DD-8C-AF-5E</TextBlock>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Button Style="{DynamicResource ButtonIconStyle}"
+                            x:Name="btnRefreshMac" Click="btnRefreshMac_Click">
+                        <TextBlock Text="&#xE149;" Style="{DynamicResource TextBlockButtonIconStyle}"/>
+                    </Button>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button x:Name="btnLeftShow" 
+                        Style="{DynamicResource TabButtonStyle}"
+                        Click="btnLeftShow_Click">
+                        <Grid>
+                            <TextBlock Text="&#xEF15;"
+                                   Style="{DynamicResource TextBlockButtonIconStyle}"/>
+                            <Border BorderThickness="0" VerticalAlignment="Bottom" Height="3" Background="{DynamicResource _BlueBrush}"
+                                Visibility="{Binding Path=TabVis.LeftTabVisibility, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="btnRightShow" 
+                        Style="{DynamicResource TabButtonStyle}"
+                        Click="btnRightShow_Click">
+                        <Grid>
+                            <TextBlock Text="&#xE82D;"
+                                   Style="{DynamicResource TextBlockButtonIconStyle}"/>
+                            <Border BorderThickness="0" VerticalAlignment="Bottom" Height="3" Background="{DynamicResource _BlueBrush}"
+                                Visibility="{Binding Path=TabVis.LeftTabVisibility, Converter={StaticResource InvertableBooleanToVisibilityConverter}, ConverterParameter=Inverted}"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Border d:IsHidden="True"
+                    Visibility="{Binding Path=TabVis.LeftTabVisibility, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Grid>
+                        <TextBox x:Name="txtNewMac"
+                                 Style="{StaticResource placeHolder}" 
+                                 Tag="New Mac Address" 
+                                 Height="30"
+                                 Width="260"/>
+                    </Grid>
+                </Border>
+
+                <Border d:IsHidden="False"
+                    Visibility="{Binding Path=TabVis.LeftTabVisibility, Converter={StaticResource InvertableBooleanToVisibilityConverter}, ConverterParameter=Inverted}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Label VerticalAlignment="Center" 
+                               HorizontalAlignment="Center" 
+                               FontFamily="Segoe UI" 
+                               FontSize="20">File:</Label>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBox x:Name="txtFilePath"
+                                     Style="{DynamicResource TextBoxCanClearStyle}"
+                                     Height="30"
+                                     Margin="5, 0, 5, 0"
+                                     ButtonBase.Click="ClearTextBox_Click"
+                                     IsReadOnly="True" TextChanged="txtFilePath_TextChanged"/>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Button Style="{DynamicResource ButtonIconStyle}"
+                                    x:Name="btnBrowseFile" Click="btnBrowseFile_Click">
+                                <TextBlock Text="&#xE1C4;" Style="{DynamicResource TextBlockButtonIconStyle}"/>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Button x:Name="btnChangeMac"
+                        Style="{StaticResource BorderChangeTemplate}" Click="btnChangeMac_Click"></Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

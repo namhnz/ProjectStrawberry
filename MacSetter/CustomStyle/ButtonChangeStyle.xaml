@@ -1,0 +1,69 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MacSetter.CustomStyle"
+                    xmlns:essential="clr-namespace:MacSetter.Essential">
+    
+    
+    <Style x:Key="BorderChangeTemplate" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate  TargetType="{x:Type Button}">
+                    <Border x:Name="border" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Border x:Name="upperBorder" 
+                                        Background="Black"
+                                        Opacity="0"/>
+                            <TextBlock x:Name="text"
+                                       Foreground="White"
+                                       Padding="0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontSize="20"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       Width="20"
+                                       Text="{TemplateBinding essential:ButtonTextExtension.TextInside}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect" TargetName="border">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Black" Direction="90" ShadowDepth="2" BlurRadius="20" Opacity="0.23"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Effect" TargetName="text">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1" Color="White"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" TargetName="upperBorder" Value="0.2"/>
+                        </Trigger>
+
+                        <DataTrigger Binding="{Binding Path=State.ButtonChangingState}" Value="Success">
+                            <Setter Property="Background" TargetName="border" Value="Green"/>
+                            <Setter Property="Text" TargetName="text" Value="&#xEB68;"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=State.ButtonChangingState}" Value="Changing">
+                            <Setter Property="Background" TargetName="border" Value="Purple"/>
+                            <Setter Property="Text" TargetName="text" Value="&#xEDD6;"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=State.ButtonChangingState}" Value="Failure">
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource _DarkRedBrush}"/>
+                            <Setter Property="Text" TargetName="text" Value="&#xEF2C;"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=State.ButtonChangingState}" Value="Default">
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource _BlueBrush}"/>
+                            <Setter Property="Text" TargetName="text" Value="&#xE26B;"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

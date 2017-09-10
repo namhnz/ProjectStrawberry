@@ -1,0 +1,131 @@
+﻿<Application x:Class="MacSetter.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MacSetter"
+             StartupUri="MacSetterWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+                <ResourceDictionary>
+
+
+                    <!--Thay đổi màu label khi rê chuột lên-->
+                    <!--<Style x:Key="changeLabelColorWhenMouseOver" TargetType="{x:Type Label}">
+                        <Setter Property="Foreground" Value="{DynamicResource _GrayBrush}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{DynamicResource _BlueBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>-->
+
+                    <!--Thay đổi màu rectangle khi rê chuột lên - Dùng cho 2 Tab-->
+                    <!--<Style x:Key="changeRectangleColorWhenMouseOver" TargetType="{x:Type Rectangle}">
+                        <Setter Property="Fill" Value="Transparent"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Fill" Value="{DynamicResource _LightGrayBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>-->
+
+                    <!--Thay đổi màu sắc label khi rê chuột vào rectangle phía dưới-->
+                    <!--<Style x:Key="changeLabelColorWhenMouseOverRectangle" TargetType="{x:Type Label}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=IsMouseOver}" Value="True">
+                                <Setter Property="Image.Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="30"
+                                              Opacity="100"
+                                              ShadowDepth="0"
+                                              Color="WhiteSmoke" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>-->
+
+                    <!--Style cho Border của nút Change-->
+                    <!--<Style x:Key="BorderChangeStyle" TargetType="{x:Type Border}">
+                        <Setter Property="Border.Background" Value="{DynamicResource _BlueBrush}"/>
+                        <Style.Triggers>
+                            <Trigger Property="Border.IsMouseOver" Value="True">
+                                <Setter Property="Border.Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="Black" 
+                                                  Direction="90" 
+                                                  ShadowDepth="2" 
+                                                  BlurRadius="20" 
+                                                  Opacity="0.23"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>-->
+                    <!--Style cho Textblock phía trong BorderChange-->
+                    <!--<Style x:Key="TextBlockChangeGlowStyle" TargetType="{x:Type TextBlock}">
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="FontSize" Value="20" />
+                        <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Setter Property="Width" Value="20"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True">
+                                <Setter Property="TextBlock.Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="10" 
+                                              ShadowDepth="0" 
+                                              Opacity="1" 
+                                              Color="White"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>-->
+
+                    
+
+                    
+
+                    <!--Thêm Placeholder cho Textbox-->
+                    
+
+                    <!--Style cho Border chứa TextBlock CurrentMac-->
+                    <Style x:Key="BorderContainCurrentMacTextBlockStyle" TargetType="Border">
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="4"/>
+                        
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFE5E5E5"/>
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ResourceDictionary>
+
+
+
+
+                
+                <ResourceDictionary Source="CustomStyle/WindowCustomStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="CustomStyle/Color.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="CustomStyle/TabChangePageButtonStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="CustomStyle/ButtonOnlyIconStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="CustomStyle/TextBoxCanClearStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="CustomStyle/PlaceHolderTextBoxStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="CustomStyle/ButtonChangeStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="SettingsWindowResources/Style/NormalButtonStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="SettingsWindowResources/Style/NavigatorButtonStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="SettingsWindowResources/Style/BorderHideShowTrigger.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+        
+        
+    </Application.Resources>
+</Application>

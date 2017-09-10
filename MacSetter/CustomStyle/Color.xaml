@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MacSetter.CustomStyle">
+    
+    <SolidColorBrush x:Key="_BlueBrush" Color="#FF0050C5"/>
+
+  
+    <SolidColorBrush x:Key="_DarkRedBrush" Color="#FFBB0000"/>
+
+    <!--Định nghĩa màu xám đậm-->
+    <SolidColorBrush x:Key="_GrayBrush" Color="#FF95989A"/>
+    <!--Hai màu này giống nhau-->
+    <SolidColorBrush x:Key="_DarkGrayBrush" Color="#999999"/>
+
+    <!--Định nghĩa màu xám nhạt-->
+    <SolidColorBrush x:Key="_LightGrayBrush" Color="#cdd1d7"/>
+
+    <!--Định nghĩa màu cho TitleBar-->
+
+    <SolidColorBrush
+            x:Key="TitleBar_LightRedBrush"
+            Color="#ff5d56"/>
+
+    <SolidColorBrush
+            x:Key="TitleBar_DarkRedBrush"
+            Color="#e64842"/>
+
+    <SolidColorBrush
+            x:Key="TitleBar_LightYellowBrush"
+            Color="#ffbd35"/>
+
+    <SolidColorBrush
+            x:Key="TitleBar_DarkYellowBrush"
+            Color="#e5a12b"/>
+
+    <SolidColorBrush
+            x:Key="TitleBar_LightGreenBrush"
+            Color="#00cd4b"/>
+
+    <SolidColorBrush
+            x:Key="TitleBar_DarkGreenBrush"
+            Color="#00ad40"/>
+
+    <SolidColorBrush
+                x:Key="TitleBar_DarkGrayBrush"
+                Color="#999999"/>
+
+    <SolidColorBrush
+                x:Key="TitleBar_LightGrayBrush"
+                Color="#cccccc"/>
+
+    <SolidColorBrush
+            x:Key="TitleBar_LightBlueBrush"
+            Color="#1473e6"/>
+
+    <SolidColorBrush
+            x:Key="TitleBar_DarkBlueBrush"
+            Color="#0050c5"/>
+
+</ResourceDictionary>
